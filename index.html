@@ -3,24 +3,24 @@
     <title>singularities</title>
     <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="jQueryRotate.2.2.js"></script>
 
     <style>
       h1 { font-family: 'Oxygen', sans-serif; size: 4em; color: #734d8f; }
-      .logo { background: transparent url('logo_bg.png') no-repeat center center; display: block; width: 20px; height: 20px; padding: 10px 15px; float: left; }
+      .logo { background: transparent url('logo_bg.png') no-repeat center center; display: block; width: 20px; height: 50px; padding: 0px 15px; float: left; -webkit-transform: rotateX(45deg); transform: rotateX(45deg); }
       #text { float: left; display: block; margin: 0px 10px; }
-      #text:hover { text-shadow:0px 0px 20px #734d8f; }
+      h1:hover #text { text-shadow:0px 0px 20px #734d8f; }
     </style>
   </head>
   <body>
-    <h1> <span class="logo"> <img src="logo_fg.gif" alt="LOGO" /> </span> <span id="text"> singularities.org </span> <span class="logo"> <img src="logo_fg.gif" alt="LOGO" /> </span>  </h1>
+    <h1> <span class="logo"></span> <span id="text"> singularities.org </span> <span class="logo"> </span>  </h1>
     <script>
       var globalDegrees = 0,
           rotation,
           setRotation = function() {
 	    rotation = setInterval(
                          function () {
-                           $('.logo').rotate(globalDegrees = (globalDegrees - 1) % 360);
+		           globalDegrees = (globalDegrees - 1) % 360;
+                           $('.logo').css('-webkit-transform', 'rotateX(45deg) rotateZ(' + globalDegrees + 'deg)').css('transform', 'rotateX(45deg) rotateZ(' + globalDegrees + 'deg);');
                          },
                          30
                        );
